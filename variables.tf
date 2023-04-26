@@ -2,7 +2,7 @@
 # 変数ファイル
 # 
 variable "compartment_ocid" {
-  default = "ocid1.compartment.oc1..aaaaaaaatyksv4n5nww3nm3jjc6mcfw6fqlsuafj7h63nqn22zkqlochrava"
+  default = "ocid1.compartment.oc1..aaaaaaaaf2r4j3dygq56tj2p6p2rjmhuepbzed6ylovlg2klmf34xs7jdumq"
 }
 variable "vcn_cidr_block" {
   default = "10.51.0.0/16"
