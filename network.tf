@@ -1,5 +1,5 @@
 #
-# VCN ファイル
+# VCN 構成ファイル
 # 
 resource "oci_core_vcn" "dev_vcn" {
   cidr_block     = var.vcn_cidr_block
