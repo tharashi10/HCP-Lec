@@ -42,5 +42,6 @@ variable "list_sample" {
 }
 
 output "sample_list_output" {
+  description = "an example of a list in terraform"
   value = var.list_sample
 }
