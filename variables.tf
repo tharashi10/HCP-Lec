@@ -16,22 +16,22 @@ variable "vcn_dns_label" {
 variable "sl_egress_destination_prv" {
   default = "0.0.0.0/0"
 }
-variable "var.sl_egress_protocol_prv" {
+variable "sl_egress_protocol_prv" {
   default = "6"
 }
-variable "l_ingress_source_prv " {
+variable "sl_ingress_source_prv" {
   default = "10.0.0.0/16"
 }
 variable "sl_ingress_protocol_prv" {
   default = "6"
 }
-variable "sl_ingress_tcp_dest_port_max_prv " {
+variable "sl_ingress_tcp_dest_port_max_prv" {
   default = "22"
 }
 variable "sl_ingress_tcp_dest_port_min_prv" {
   default = "22"
 }
-variable "sl_display_name_prv " {
+variable "sl_display_name_prv" {
   default = "dev_seclist_prv"
 }
 
