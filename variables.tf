@@ -34,3 +34,13 @@ variable "sl_ingress_tcp_dest_port_min_prv" {
 variable "sl_display_name_prv " {
   default = "dev_seclist_prv"
 }
+
+variable "list_sample" {
+  description = "an example of a list in terraform"
+  type = list
+  default = ["Hoo","Bar","Hoge"]
+}
+
+output "sample_list_output" {
+  value = var.list_sample
+}
