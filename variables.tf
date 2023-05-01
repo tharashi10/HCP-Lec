@@ -36,7 +36,7 @@ variable "sl_display_name_prv" {
 }
 
 variable "list_sample" {
-  description = "an example of a list in terraform"
+  description = "Terraformのシンプルなリスト形式"
   type = list
   default = ["Hoo","Bar","Hoge"]
 }
