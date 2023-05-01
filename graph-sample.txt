@@ -1,0 +1,25 @@
+digraph {
+        compound = "true"
+        newrank = "true"
+        subgraph "root" {
+                "[root] data.oci_identity_availability_domains.ads (expand)" [label = "data.oci_identity_availability_domains.ads", shape = "box"]
+                "[root] oci_core_vcn.dev_vcn (expand)" [label = "oci_core_vcn.dev_vcn", shape = "box"]
+                "[root] provider[\"registry.terraform.io/hashicorp/oci\"]" [label = "provider[\"registry.terraform.io/hashicorp/oci\"]", shape = "diamond"]
+                "[root] var.compartment_ocid" [label = "var.compartment_ocid", shape = "note"]
+                "[root] var.vcn_cidr_block" [label = "var.vcn_cidr_block", shape = "note"]
+                "[root] var.vcn_display_name" [label = "var.vcn_display_name", shape = "note"]
+                "[root] var.vcn_dns_label" [label = "var.vcn_dns_label", shape = "note"]
+                "[root] data.oci_identity_availability_domains.ads (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/oci\"]"
+                "[root] data.oci_identity_availability_domains.ads (expand)" -> "[root] var.compartment_ocid"
+                "[root] oci_core_vcn.dev_vcn (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/oci\"]"
+                "[root] oci_core_vcn.dev_vcn (expand)" -> "[root] var.compartment_ocid"
+                "[root] oci_core_vcn.dev_vcn (expand)" -> "[root] var.vcn_cidr_block"
+                "[root] oci_core_vcn.dev_vcn (expand)" -> "[root] var.vcn_display_name"
+                "[root] oci_core_vcn.dev_vcn (expand)" -> "[root] var.vcn_dns_label"
+                "[root] output.all-ads (expand)" -> "[root] data.oci_identity_availability_domains.ads (expand)"
+                "[root] provider[\"registry.terraform.io/hashicorp/oci\"] (close)" -> "[root] data.oci_identity_availability_domains.ads (expand)"
+                "[root] provider[\"registry.terraform.io/hashicorp/oci\"] (close)" -> "[root] oci_core_vcn.dev_vcn (expand)"
+                "[root] root" -> "[root] output.all-ads (expand)"
+                "[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/oci\"] (close)"
+        }
+}

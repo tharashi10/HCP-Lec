@@ -7,3 +7,8 @@ resource "oci_core_vcn" "dev_vcn" {
   display_name   = var.vcn_display_name
   dns_label      = var.vcn_dns_label
 }
+
+output "oci_dev_vcn_id" {
+  description = "Cheking ID of the dev_vcn"
+  value = oci_core_vcn.dev_vcn.id
+}
