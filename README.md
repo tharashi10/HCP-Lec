@@ -1,1 +1,1 @@
-# HCP_LEC
+# Terraform Sample

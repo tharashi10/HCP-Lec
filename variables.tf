@@ -1,6 +1,3 @@
-#
-# 変数ファイル
-# 
 variable "compartment_ocid" {
   default = "ocid1.compartment.oc1..aaaaaaaaf2r4j3dygq56tj2p6p2rjmhuepbzed6ylovlg2klmf34xs7jdumq"
 }
