@@ -62,8 +62,8 @@ resource "oci_core_route_table" "default" {
 #}
 
 # NAT構成
-resource "oci_core_nat_gateway" "default" {
-  compartment_id = oci_identity_compartment.default.id
-  vcn_id         = oci_core_vcn.default.id
-  display_name   = "${var.project_prefix}-NAT"
-}
+#resource "oci_core_nat_gateway" "default" {
+#  compartment_id = oci_identity_compartment.default.id
+#  vcn_id         = oci_core_vcn.default.id
+#  display_name   = "${var.project_prefix}-NAT"
+#}
