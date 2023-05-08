@@ -9,8 +9,9 @@ resource "oci_core_vcn" "default" {
 # セキュリティリストの構成
 resource "oci_core_security_list" "default" {
   compartment_id = oci_identity_compartment.default.id
+  vcn_id = oci_core_vcn.default.id
   display_name = "${var.project_prefix}-Default_Sl"
-  manage_default_resource_id = oci_core_vcn.default.default_security_list_id
+  #manage_default_resource_id = oci_core_vcn.default.default_security_list_id
   egress_security_rules {
     destination = var.sl_egress_destination_prv
     protocol    = var.sl_egress_protocol_prv
@@ -26,7 +27,6 @@ resource "oci_core_security_list" "default" {
     }
   }
 }
-
 
 # Service GatewayのIDを取得
 data "oci_core_services" "default" {
@@ -44,7 +44,7 @@ resource "oci_core_service_gateway" "default" {
   vcn_id = oci_core_vcn.default.id
 
   services {
-    service_id = data.oci_core_services.oci_core_service_gateway[0].id
+    service_id = data.oci_core_services.default[0].id
   }
 }
 
@@ -55,7 +55,7 @@ resource "oci_core_route_table" "default" {
   vcn_id = oci_core_vcn.default.id
 
   route_rules {
-    destination       = data.oci_core_services.default.services[0].cidr_block
+    destination       = data.oci_core_services.default[0].cidr_block
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.default.id
   }
