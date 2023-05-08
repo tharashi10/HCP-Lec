@@ -44,7 +44,7 @@ resource "oci_core_service_gateway" "default" {
   vcn_id = oci_core_vcn.default.id
 
   services {
-    service_id = data.oci_core_services.default[0].id
+    service_id = data.oci_core_services.default[0]["id"]
   }
 }
 
@@ -55,7 +55,7 @@ resource "oci_core_route_table" "default" {
   vcn_id = oci_core_vcn.default.id
 
   route_rules {
-    destination       = data.oci_core_services.default[0].cidr_block
+    destination       = data.oci_core_services.default[0]["cidr_block"]
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.default.id
   }
