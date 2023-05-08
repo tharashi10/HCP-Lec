@@ -1,17 +1,6 @@
+# Availability Domainのデータソース取得[インスタンス作成要素]
 data "oci_identity_availability_domains" "ads" {
-  compartment_id = var.compartment_ocid
-}
-
-data "oci_core_services" "dev_services" {
-  filter {
-    name = "name"
-    values = ["All .* Services In Oracle Services Network"]
-    regex = true
-  }
-}
-
-output "sample_services" {
-  value = data.oci_core_services.dev_services.services
+  compartment_id = var.provider_tenancy_ocid
 }
 
 output "all-ads" {
