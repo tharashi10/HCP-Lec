@@ -53,13 +53,13 @@ resource "oci_core_route_table" "default" {
   display_name   = "${var.project_prefix}-Rt"
   compartment_id = oci_identity_compartment.default.id
   vcn_id = oci_core_vcn.default.id
-
-  route_rules {
-    destination       = data.oci_core_services.default.services[0]["cidr_block"]
-    destination_type  = "SERVICE_CIDR_BLOCK"
-    network_entity_id = oci_core_service_gateway.default.id
-  }
 }
+#  route_rules {
+#    destination       = data.oci_core_services.default.services[0]["cidr_block"]
+#    destination_type  = "SERVICE_CIDR_BLOCK"
+#    network_entity_id = oci_core_service_gateway.default.id
+#  }
+#}
 
 # NAT構成
 resource "oci_core_nat_gateway" "default" {
