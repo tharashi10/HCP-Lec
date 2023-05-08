@@ -10,7 +10,7 @@ resource "oci_core_vcn" "default" {
 resource "oci_core_security_list" "default" {
   compartment_id = oci_identity_compartment.default.id
   vcn_id = oci_core_vcn.default.id
-  display_name = "${var.project_prefix}-Default_Sl"
+  display_name = "${var.project_prefix}-Default-Sl"
   #manage_default_resource_id = oci_core_vcn.default.default_security_list_id
   egress_security_rules {
     destination = var.sl_egress_destination_prv
@@ -38,15 +38,15 @@ data "oci_core_services" "default" {
 }
 
 # Service Gatewayの構成
-resource "oci_core_service_gateway" "default" {
-  display_name = "${var.project_prefix}-SGW"
-  compartment_id = oci_identity_compartment.default.id
-  vcn_id = oci_core_vcn.default.id
-
-  services {
-    service_id = data.oci_core_services.default.services[0]["id"]
-  }
-}
+#resource "oci_core_service_gateway" "default" {
+#  display_name = "${var.project_prefix}-SGW"
+#  compartment_id = oci_identity_compartment.default.id
+#  vcn_id = oci_core_vcn.default.id
+#
+#  services {
+#    service_id = data.oci_core_services.default.services[0]["id"]
+#  }
+#}
 
 # ルート表の構成
 resource "oci_core_route_table" "default" {
@@ -59,4 +59,11 @@ resource "oci_core_route_table" "default" {
     destination_type  = "SERVICE_CIDR_BLOCK"
     network_entity_id = oci_core_service_gateway.default.id
   }
+}
+
+# NAT構成
+resource "oci_core_nat_gateway" "default" {
+  compartment_id = oci_identity_compartment.default.id
+  vcn_id         = oci_core_vcn.default.id
+  display_name   = "${var.project_prefix}-NAT"
 }
