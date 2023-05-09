@@ -70,9 +70,24 @@ resource "oci_core_route_table" "default" {
 
 
 # HTTP バックエンド構成
+# terraform {
+#   backend "http" {
+#    address = "https://objectstorage.ap-tokyo-1.oraclecloud.com/p/CcoyKZCIdw9RlYckfsquFAZvMG37Wj_-BiwdFT0fdPAaiodH-rL_oQWFmpbV3zqO/n/nrp0revoo1zt/b/bucket-tfstate/o/terraform.tfstate"
+#    update_method = "PUT"
+#   }
+# }
+
+# S3バックエンド構成
 terraform {
-  backend "http" {
-   address = "https://objectstorage.ap-tokyo-1.oraclecloud.com/p/CcoyKZCIdw9RlYckfsquFAZvMG37Wj_-BiwdFT0fdPAaiodH-rL_oQWFmpbV3zqO/n/nrp0revoo1zt/b/bucket-tfstate/o/terraform.tfstate"
-   update_method = "PUT"
-  }
+  backend "s3" {
+    bucket = "terraform-states"
+    key = "./terraform.tfstate"
+    region = "ap-tokyo-1"
+    endpoint = "https://nrp0revoo1zt.compat.objectstorage.ap-tokyo-1.oraclecloud.com"
+    shared_credentials_file     = "./terraform_bucket_credentials"
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+  }   
 }

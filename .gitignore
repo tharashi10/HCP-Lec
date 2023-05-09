@@ -2,3 +2,4 @@
 *.tfstate*
 *.png
 *.txt
+terraform_bucket_credentials
