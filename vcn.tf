@@ -72,7 +72,7 @@ resource "oci_core_route_table" "default" {
 # HTTP バックエンド構成
 terraform {
   backend "http" {
-   address = "https://objectstorage.ap-tokyo-1.oraclecloud.com/p/CcoyKZCIdw9RlYckfsquFAZvMG37Wj_-BiwdFT0fdPAaiodH-rL_oQWFmpbV3zqO/n/nrp0revoo1zt/b/bucket-tfstate/o/"
+   address = "https://objectstorage.ap-tokyo-1.oraclecloud.com/p/CcoyKZCIdw9RlYckfsquFAZvMG37Wj_-BiwdFT0fdPAaiodH-rL_oQWFmpbV3zqO/n/nrp0revoo1zt/b/bucket-tfstate/o/terraform.tfstate"
    update_method = "PUT"
   }
 }
