@@ -42,7 +42,7 @@ variable "sl_ingress_protocol_prv" {
   default = "6"
 }
 variable "sl_ingress_tcp_dest_port_max_prv" {
-  default = "22"
+  default = "80"
 }
 variable "sl_ingress_tcp_dest_port_min_prv" {
   default = "22"
