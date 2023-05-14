@@ -28,3 +28,18 @@ module "webserver_cluster" {
   sl_ingress_tcp_dest_port_min_prv = "22"
   sl_display_name_prv = "dev_seclist_prv_from_Stage"
 }
+
+# S3バックエンド構成
+terraform {
+  backend "s3" {
+    bucket = "terraform-states"
+    key = "./terraform.tfstate"
+    region = "ap-tokyo-1"
+    endpoint = "https://nrp0revoo1zt.compat.objectstorage.ap-tokyo-1.oraclecloud.com"
+    shared_credentials_file     = "./terraform_bucket_credentials"
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    force_path_style            = true
+  }   
+}

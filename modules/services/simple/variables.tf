@@ -66,7 +66,3 @@ variable "sl_display_name_prv" {
   description = "サブネットの表示名"
   type        = string
 }
-
-variable "shared_credentials_file" {
-  default = "./terraform_bucket_credentials"
-}
