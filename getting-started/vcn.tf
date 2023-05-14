@@ -80,7 +80,7 @@ resource "oci_core_route_table" "default" {
 # S3バックエンド構成
 terraform {
   backend "s3" {
-    bucket = "terraform-states"
+    bucket = "bucket-tfstate"
     key = "./terraform.tfstate"
     region = "ap-tokyo-1"
     endpoint = "https://nrp0revoo1zt.compat.objectstorage.ap-tokyo-1.oraclecloud.com"
