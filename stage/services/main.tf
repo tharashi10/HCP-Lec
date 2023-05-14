@@ -16,7 +16,7 @@ module "webserver_cluster" {
   create_compartment_description = "即削除するサンプル環境"
   vcn_cidr_block = "10.51.0.0/16"
   vcn_display_name = "VCN_from_Stage"
-  vcn_dns_label = "VCN_from_Stage"
+  vcn_dns_label = "VCNStage"
 
   sl_egress_destination_prv = "0.0.0.0/0"
   sl_egress_protocol_prv = "6"
