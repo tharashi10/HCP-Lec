@@ -8,7 +8,7 @@ provider "oci" {
 }
 
 module "webserver_cluster" {
-  source = "../../../modules/services/simple"
+  source = "../../modules/services/simple"
 
   project_prefix = "Sample"
   provider_tenancy_ocid = "ocid1.compartment.oc1..aaaaaaaaf2r4j3dygq56tj2p6p2rjmhuepbzed6ylovlg2klmf34xs7jdumq"
