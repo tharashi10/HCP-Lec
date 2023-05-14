@@ -1,3 +1,12 @@
+terraform {
+  required_version = ">= 1.4.0"
+}
+
+# Instance PrincipalでAPI実行する
+provider "oci" {
+  auth = "InstancePrincipal"
+}
+
 module "webserver_cluster" {
   source = "../../../modules/services/simple"
 
