@@ -13,7 +13,7 @@ resource "oci_core_instance" "compute01" {
 
   display_name = "${var.project_prefix}-Compute01"
   create_vnic_details {
-    assign_public_ip = true
+    assign_public_ip = false
     subnet_id        = oci_core_subnet.private_subnet01.id
   }
   metadata = {
