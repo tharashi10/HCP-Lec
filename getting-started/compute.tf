@@ -18,7 +18,7 @@ resource "oci_core_instance" "compute01" {
     subnet_id        = ""
   }
   metadata = {
-    ssh_authorized_keys = file(var.ssh_authorized_keys)
+    ssh_authorized_keys = file(var.compute_ssh_authorized_keys)
   }
   preserve_boot_volume = false
 }
