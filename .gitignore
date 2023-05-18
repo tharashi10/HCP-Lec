@@ -5,4 +5,4 @@
 terraform_bucket_credentials
 *.DS_Store*
 *.vscode*
-getting-started/.key/compute01
+getting-started/.key/compute01*
