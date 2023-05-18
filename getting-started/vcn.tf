@@ -35,6 +35,22 @@ resource "oci_core_security_list" "default" {
 }
 
 /*
+ * サブネットの作成
+ * 共通の接頭辞パターンを用いるため、表示名は「SampleIaC-PRV-SUBNET01」として作成される
+ */
+resource "oci_core_subnet" "private_subnet01" {
+  cidr_block                 = var.subnet_cidr_block
+  compartment_id             = oci_identity_compartment.default.id
+  vcn_id                     = oci_core_vcn.default.id
+  display_name               = "${var.project_prefix}-PRV-SUBNET01"
+  prohibit_public_ip_on_vnic = true
+  security_list_ids          = [oci_core_security_list.default.id]
+  route_table_id             = oci_core_route_table.default.id
+  dns_label                  = var.prv_subnet_dns_label
+}
+
+
+/*
  * Service Gatewayの作成
  * 今回は作成しないためコメントアウト
 

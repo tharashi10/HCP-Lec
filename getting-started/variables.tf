@@ -43,11 +43,29 @@ variable "sl_ingress_protocol_prv" {
   default = "6"
 }
 variable "sl_ingress_tcp_dest_port_max_prv" {
-  default = "80"
+  default = "22"
 }
 variable "sl_ingress_tcp_dest_port_min_prv" {
   default = "22"
 }
-variable "sl_display_name_prv" {
-  default = "seclist_prv_Hogehoge" #Overrideされる
+
+#[サブネット]
+variable "subnet_cidr_block" {
+  default = "10.0.0.0/24"
 }
+variable "prv_subnet_dns_label" {
+  default = "prvsub01"
+}
+
+
+#[Compute]
+variable "compute_shape" {
+  default = "VM.Standard.E2.1.Micro"
+}
+variable "compute_image_id" {
+  default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaatdxexxx72lna2qaj4yllt4k77ochlsroformlk2omspzle5eai3q"
+}
+variable "compute_ssh_authorized_keys" {
+  default = ".key/compute01.pub"
+}
+
