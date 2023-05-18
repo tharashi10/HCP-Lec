@@ -63,7 +63,7 @@ variable "compute_shape" {
   default = "VM.Standard.E2.1.Micro"
 }
 variable "compute_image_id" {
-  default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaatdxexxx72lna2qaj4yllt4k77ochlsroformlk2omspzle5eai3q"
+  default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaaub2gikosfetvtrgwa6cqwhtt25ukkiaogbpsfiyiayus6puifm3q"
 }
 variable "compute_ssh_authorized_keys" {
   default = ".key/compute01.pub"
