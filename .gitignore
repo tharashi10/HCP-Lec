@@ -3,3 +3,5 @@
 *.png
 *.txt
 terraform_bucket_credentials
+*.DS_Store*
+*.vscode*
