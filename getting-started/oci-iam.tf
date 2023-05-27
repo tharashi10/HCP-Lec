@@ -6,10 +6,10 @@ resource "oci_identity_user" "sample_user" {
   defined_tags   = { "Owner" = "TeamXYZ", "ManagedBy" = "Terraform" }
 }
 
-resource "oci_identity_user" "sample_users_for_each" {
-  for_each = toset(var.user_names) // set or map
-  name     = each.value
-}
+//resource "oci_identity_user" "sample_users_for_each" {
+//  for_each = toset(var.user_names) // set or map
+//  name     = each.value
+//}
 
 output "all_users" {
   value = oci_identity_user.sample_users_for_each
