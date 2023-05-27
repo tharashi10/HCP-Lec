@@ -15,9 +15,9 @@ output "all_users" {
   value = oci_identity_user.sample_users_for_each
 }
 
-output "all_users_ids" {
-  value = values(oci_identity_user.sample_users_for_each)[*].id
-}
+//output "all_users_ids" {
+//  value = values(oci_identity_user.sample_users_for_each)[*].id
+//}
 
 output "all_users_ids_list_compression" {
   value = [for name in var.var.user_names : upper(name)]
