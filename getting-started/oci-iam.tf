@@ -9,7 +9,7 @@
 resource "oci_identity_user" "sample_users_for_each" {
   for_each       = toset(var.user_names) // set or map
   name           = each.value
-  compartment_id = oci_identity_compartment.default.id
+  compartment_id = "ocid1.tenancy.oc1..aaaaaaaamu4bvfwi2pkyutoags7ws3t6jnfrbfwgcwiwzqziuwuikunj772q"
   description    = "oci sample user"
   defined_tags   = { "Owner" = "TeamXYZ", "ManagedBy" = "Terraform" }
 }

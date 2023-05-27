@@ -2,7 +2,7 @@
  * OCI 仮想マシンの作成
  * 表示名は「SampleIac-Compute01」として作成される
  */
-resource "oci_core_instance" "compute01" {
+resource "oci_core_instance" "compute" {
   for_each     = toset(["compute01", "compute02"])
   display_name = each.value
 
