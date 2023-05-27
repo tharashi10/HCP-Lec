@@ -1,9 +1,9 @@
 resource "oci_identity_user" "sample_user" {
-  compartmentid = oci_identity_compartment.default.id
-  description   = "oci sample user"
-  name          = var.user_names[count.index]
-  count         = length(var.user_names)
-  tag           = { "Owner" = "TeamXYZ", "ManagedBy" = "Terraform" }
+  compartment_id = oci_identity_compartment.default.id
+  description    = "oci sample user"
+  name           = var.user_names[count.index]
+  count          = length(var.user_names)
+  defined_tags   = { "Owner" = "TeamXYZ", "ManagedBy" = "Terraform" }
 }
 
 resource "oci_identity_user" "sample_users_for_each" {
