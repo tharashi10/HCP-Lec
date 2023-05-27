@@ -12,7 +12,7 @@ resource "oci_identity_user" "sample_user" {
 //}
 
 output "all_users" {
-  value = oci_identity_user.sample_users_for_each
+  value = oci_identity_user.sample_user
 }
 
 //output "all_users_ids" {
@@ -20,5 +20,5 @@ output "all_users" {
 //}
 
 output "all_users_ids_list_compression" {
-  value = [for name in var.var.user_names : upper(name)]
+  value = [for name in var.user_names : upper(name)]
 }
