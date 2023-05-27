@@ -3,6 +3,9 @@
  * 表示名は「SampleIac-Compute01」として作成される
  */
 resource "oci_core_instance" "compute01" {
+  for_each     = toset(["compute01", "compute02"])
+  display_name = each.value
+
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = oci_identity_compartment.default.id
   shape               = var.compute_shape
@@ -11,7 +14,8 @@ resource "oci_core_instance" "compute01" {
     source_type = "image"
   }
 
-  display_name = "${var.project_prefix}-Compute01"
+  //display_name = "${var.project_prefix}-Compute01"
+
   create_vnic_details {
     assign_public_ip = false
     subnet_id        = oci_core_subnet.private_subnet01.id
