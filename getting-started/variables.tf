@@ -69,3 +69,10 @@ variable "compute_ssh_authorized_keys" {
   default = ".key/compute01.pub"
 }
 
+
+#[OCI IAM]
+variable "user_names" {
+  description = "OCI IAM Userサンプル"
+  type        = list(string)
+  default     = ["Bar", "Foo", "Hoge"]
+}
