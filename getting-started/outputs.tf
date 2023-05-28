@@ -12,3 +12,7 @@ output "sample_list_output" {
   description = "作成したリストを表示"
   value       = var.list_sample
 }
+
+output "sample_users_output_upper" {
+  value = [for name in var.user_names : upper(name)]
+}

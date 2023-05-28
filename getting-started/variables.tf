@@ -76,7 +76,3 @@ variable "user_names" {
   type        = list(string)
   default     = ["Bar", "Foo", "Hoge"]
 }
-
-variable "custom_tags" {
-  default = { "Owner" = "TeamXYZ", "ManagedBy" = "Terraform" }
-}

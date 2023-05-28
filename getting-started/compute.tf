@@ -3,8 +3,13 @@
  * 表示名は「SampleIac-Compute01」として作成される
  */
 resource "oci_core_instance" "compute" {
-  for_each     = toset(["compute01", "compute02"])
-  display_name = each.value
+  // 1. countを使う場合
+  count        = 2
+  display_name = "compute_${count.index}"
+
+  // 2. for_eachを使う場合
+  // for_each     = toset(["compute01", "compute02"])
+  // display_name = each.value
 
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = oci_identity_compartment.default.id
