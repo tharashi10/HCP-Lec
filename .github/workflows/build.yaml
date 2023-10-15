@@ -10,13 +10,13 @@ jobs:
     env: 
         STACK_NAME: "OCI Resource Manager Sample Stack"
         PROVIDER_NAME: "GitHub Source Provider"
-        BRANCH_NAME: "github-actions-resource-manager"
+        BRANCH_NAME: "main"
         REPO_URL: "https://github.com/tharashi10/hashicorp-sample"
         TF_VERSION: "0.13.x"
         REGION: "ap-tokyo-1"
-        # BUCKET_NAME: "test_bucket"
+        BUCKET_NAME: "bucket001"
     steps:
-      
+
       - name: 'Checkout'
         uses: actions/checkout@v3
 
