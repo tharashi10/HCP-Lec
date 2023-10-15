@@ -26,7 +26,6 @@ jobs:
           echo "[DEFAULT]" >> ~/.oci/config
           echo "user=${{secrets.OCI_USER_OCID}}" >> ~/.oci/config
           echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
-          echo "pass_phrase=${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/config
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config
@@ -66,7 +65,7 @@ jobs:
       - name: 'Create Stack'
         if: ${{env.STACK_ID == ''}}
         run: |
-          echo "STACK_ID=$(oci resource-manager stack create-from-git-provider \
+            echo "STACK_ID=$(oci resource-manager stack create-from-git-provider \
             --compartment-id ${{secrets.OCI_COMPARTMENT_OCID}} \
             --config-source-configuration-source-provider-id $SOURCE_PROVIDER_ID \
             --config-source-branch-name $BRANCH_NAME \
@@ -79,7 +78,7 @@ jobs:
       - name: 'Create Plan Job'
         if: ${{env.STACK_ID != ''}}
         run: |
-          echo "PLAN_JOB_ID=$(oci resource-manager job create-plan-job \
+            echo "PLAN_JOB_ID=$(oci resource-manager job create-plan-job \
             --stack-id $STACK_ID --wait-for-state SUCCEEDED | jq '.data.id' -r)" >> $GITHUB_ENV
    
       - name: 'Apply Plan Job'
