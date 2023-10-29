@@ -1,23 +1,14 @@
-/*
- * 仮想クラウドネットワークの作成
- * 共通の接頭辞パターンを用いるため、表示名は「SampleIaC-VCN01」として作成される
- */
 resource "oci_core_vcn" "default" {
   display_name   = "${var.project_prefix}-VCN01"
   cidr_block     = var.vcn_cidr_block
-  compartment_id = oci_identity_compartment.default.id
+  compartment_id = var.compartment_id
   dns_label      = var.vcn_dns_label
 }
 
-/*
- * セキュリティリストの作成
- * 表示名は「SampleIaC-PRV-SL01」として作成される
- */
 resource "oci_core_security_list" "default" {
-  compartment_id = oci_identity_compartment.default.id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.default.id
   display_name   = "${var.project_prefix}-PRV-SL01"
-  #manage_default_resource_id = oci_core_vcn.default.default_security_list_id
   egress_security_rules {
     destination = var.sl_egress_destination_prv
     protocol    = var.sl_egress_protocol_prv
@@ -34,25 +25,15 @@ resource "oci_core_security_list" "default" {
   }
 }
 
-/*
- * サブネットの作成
- * 共通の接頭辞パターンを用いるため、表示名は「SampleIaC-PRV-SUBNET01」として作成される
- */
-resource "oci_core_subnet" "public_subnet01" {
+resource "oci_core_subnet" "private_subnet01" {
   cidr_block                 = var.subnet_cidr_block
-  compartment_id             = oci_identity_compartment.default.id
+  compartment_id             = var.compartment_id
   vcn_id                     = oci_core_vcn.default.id
-  display_name               = "${var.project_prefix}-PUB-SUBNET01"
-  prohibit_public_ip_on_vnic = false
+  display_name               = "${var.project_prefix}-PRV-SUBNET01"
+  prohibit_public_ip_on_vnic = true
   security_list_ids          = [oci_core_security_list.default.id]
   route_table_id             = oci_core_route_table.default.id
   dns_label                  = var.prv_subnet_dns_label
-}
-
-resource "oci_core_internet_gateway" "default" {
-  display_name   = "${var.project_prefix}_ig"
-  compartment_id = oci_identity_compartment.default.id
-  vcn_id         = oci_core_vcn.default.id
 }
 
 
@@ -79,13 +60,10 @@ resource "oci_core_service_gateway" "default" {
 }
 */
 
-/*
- * ルート表の構成
- * 表示名は「SampleIaC-RT01」として作成される
- */
+
 resource "oci_core_route_table" "default" {
   display_name   = "${var.project_prefix}-RT01"
-  compartment_id = oci_identity_compartment.default.id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.default.id
 }
 #  route_rules {
