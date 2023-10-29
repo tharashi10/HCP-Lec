@@ -1,1 +1,1 @@
-output "vcn_id" {value = oci_core_vcn.default.id}
+output "vcn_id" { value = oci_core_vcn.default.id }
